@@ -1,0 +1,246 @@
+<html>
+	<head>
+		<title>Calculo de armaduras</title>
+		<link rel="shortcut icon" type="image/x-icon" href="imagenes/arriba.jpeg">
+		<link rel="stylesheet" type="text/css" href="css_armadura/normalize.css"/>
+		<link rel="stylesheet" type="text/css" href="css_armadura/estilos_armaduras.css"/>
+		<meta name="description" content="analisis estructural de armaduras o cerchas, metodo rigideces">
+		<meta name="keywords" content="armadura, cercha, calculo, estructural">
+	</head>
+	<body>
+		<header>
+			<h1>CALCULADORA DE FUERZAS INTERNAS ARMADURAS</h1>
+			<p><b>Se recomienda fuertemente seguir el orden en el que aparecen los pasos de ingreso de datos y por supuesto se congruente con tus unidades.</b></p>
+		</header>
+		<div class="menu">
+			<a href="#" id="barras" class="opcionesMenu menuElegido">Barras</a>
+			<a href="#" id="cargas" class="opcionesMenu">Cargas</a>
+			<a href="#" id="apoyos" class="opcionesMenu">Apoyos</a>
+			<a href="#" id="solucion" class="opcionesMenu">Solucion</a>
+		</div>
+		<div class="panel">
+			<div class="entrada" id="ebarras">
+				<label for="moduloE">Módulo de elasticidad</label><br>
+				<input type="number" name="moduloE" id="moduloE" value="" placeholder="Modulo de elasticidad">
+				<label for="econs">Constante</label>
+				<input type="checkbox" name="econs" id="econs" value="" class="constante">
+				<br>
+				<label for="area">Area</label><br>
+				<input type="number" name="area" id="area" value="" placeholder="Area de la seccion">
+				<label for="acons">Constante</label>
+				<input type="checkbox" name="acons" id="acons" value="" class="constante">
+				<p>Coordenadas</p>
+				<label for="n1">Nodo de inicio</label>
+				<select class="nodos" name="n1" id="n1">
+					<option value="0">...</option>
+				</select>
+				<label for="n2">Nodo de final</label>
+				<select class="nodos" name="n2" id="n2">
+					<option value="0">...</option>
+				</select>
+				<br><br>
+				<input type="number" name="x1" id="x1" value="" placeholder="X1" class="coordenadas">
+				<input type="number" name="y1" id="y1" value="" placeholder="Y1" class="coordenadas">
+				<input type="number" name="z1" id="z1" value="" placeholder="Z1" class="coordenadas">
+				<input type="number" name="x2" id="x2" value="" placeholder="X2" class="coordenadas">
+				<input type="number" name="y2" id="y2" value="" placeholder="Y2" class="coordenadas">
+				<input type="number" name="z2" id="z2" value="" placeholder="Z2" class="coordenadas">
+				<br>
+				<input type="button" name="agregarBarra" value="Agreagar barra" class="agregar">
+			</div>
+			<div class="entrada quitar" id="ecargas">
+				<label for="nc">Nodo de aplicacion</label>
+				<select class="nodos" name="nc" id="nc">
+					<option value="0">...</option>
+				</select><br><br>
+				<label for="cx">Valor de la carga</label>
+				<input type="number" name="cx" id="fuerza" value="" placeholder=""><br><br>
+				<label for="cy">Carga en X</label>
+				<input type="checkbox" name="cx" id="cx" value="" placeholder="" class="direccion"><br><br>
+				<label for="cy">Carga en Y</label>
+				<input type="checkbox" name="cy" id="cy" value="" placeholder="" class="direccion"><br><br>
+				<label for="cz">Carga en Z</label>
+				<input type="checkbox" name="cz" id="cz" value="" placeholder="" class="direccion"><br><br>
+				<input type="button" name="agregarCarga" value="Agreagar carga" class="agregar">
+			</div>
+			<div class="entrada quitar" id="eapoyos">
+				<label for="na">Nodo de apoyo</label>
+				<select class="nodos" name="na" id="na">
+					<option value="0">...</option>
+				</select><br><br>
+				<label for="rx">Resistencia en X</label>
+				<input type="checkbox" name="rx" id="rx" value="" class="resist"><br><br>
+				<label for="ry">Resistencia en Y</label>
+				<input type="checkbox" name="ry" id="ry" value="" class="resist"><br><br>
+				<label for="rz">Resistencia en Z</label>
+				<input type="checkbox" name="rz" id="rz" value="" class="resist"><br><br>
+				<input type="button" name="agregarApoyo" value="Agreagar apoyo" class="agregar">
+			</div>
+			<div class="entrada quitar" id="resultados">
+				<table class="tabla" id="tsolBarra">
+					<tr>
+						<td>Barra</td>
+						<td>Nodo1</td>
+						<td>Nodo2</td>
+						<td>Long</td>
+						<td>E</td>
+						<td>Area</td>
+						<td>Fuerza</td>
+						<td>Type</td>
+						<td>&Delta;L</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tablon" >
+				<table class="tabla" id="tbarras">
+					<tr>
+						<td>Barra</td>
+						<td>Nodo1</td>
+						<td>Nodo2</td>
+						<td>Long</td>
+						<td>E</td>
+						<td>Area</td>
+					</tr>
+				</table>
+				<table class="tabla quitar" id="tcargas">
+					<tr>
+						<td>Num</td>
+						<td>Nodo</td>
+						<td>X</td>
+						<td>Y</td>
+						<td>Z</td>
+						<td>Fx</td>
+						<td>Fy</td>
+						<td>Fz</td>
+					</tr>
+				</table>
+				<table class="tabla quitar" id="tapoyos">
+					<tr>
+						<td>Nodo</td>
+						<td>X</td>
+						<td>Y</td>
+						<td>Z</td>
+						<td>Res X</td>
+						<td>Res Y</td>
+						<td>Res Z</td>
+					</tr>
+				</table>
+				<table class="tabla quitar" id="tsolNodos">
+					<tr>
+						<td>Nodo</td>
+						<td>X</td>
+						<td>Y</td>
+						<td>Z</td>
+						<td>Res X</td>
+						<td>Res Y</td>
+						<td>Res Z</td>
+						<td>Fx</td>
+						<td>Fy</td>
+						<td>Fz</td>
+						<td>Dx</td>
+						<td>Dy</td>
+						<td>Dz</td>
+						<td>Rx</td>
+						<td>Ry</td>
+						<td>Rz</td>
+					</tr>
+				</table>
+			</div>
+			<div class="graficos" id="plxy">
+				<canvas id="planoxy" width="940" height="620" class="zonaDibujo">tu navegador no soporta los graficos</canvas>
+				<canvas id="planozy" width="940" height="620" class="zonaDibujo quitar">tu navegador no soporta los graficos</canvas>
+				<canvas id="planoxz" width="940" height="620" class="zonaDibujo quitar">tu navegador no soporta los graficos</canvas>
+				<a href="#" id="plxy" class="opcionesPlanos planoElegido">X-Y</a>
+				<a href="#" id="plzy" class="opcionesPlanos">Z-Y</a>
+				<a href="#" id="plxz" class="opcionesPlanos">X-Z</a>
+				<input type="button" name="agregarApoyo" value="..." class="agregar" id="ajustes">
+				<input type="button" name="modificacion" value="Modificar" class="agregar" id="modifayer">
+				<div class="menuAjustes  quitar">
+					<label for="numNodo">Numero de nodo</label>
+					<input type="checkbox" name="numNodo" id="numNodo" value=""><br><br>
+					<label for="numBarra">Numero de barra</label>
+					<input type="checkbox" name="numBarra" id="numBarra" value=""><br><br>
+					<label for="grafCargas">Cargas</label>
+					<input type="checkbox" name="grafCargas" id="grafCargas" value=""><br><br>
+					<label for="grafApoyos">Apoyos</label>
+					<input type="checkbox" name="grafApoyos" id="grafApoyos" value=""><br><br>
+					<input type="button" name="hecho" value="Hecho" class="botonAjustes" id="hecho">
+				</div>
+				<div class="modificar quitar">
+					<label for="modc">Numero de Carga</label>
+					<select class="listCargas" name="modc" id="modc">
+						<option value="0">...</option>
+					</select><br><br>
+					<input type="button" name="mCarga" value="Hecho" class="botonModi" id="mCarga">
+				</div>
+				<div class="modificar quitar">
+					<label for="modc">Numero de barra</label>
+					<select class="elementos" name="modb" id="modb">
+						<option value="0">...</option>
+					</select><br><br>
+					<input type="button" name="mBarra" value="Hecho" class="botonModi" id="mBarra">
+				</div>
+				<input type="range" name="escala" id="escala" min="1" max="100" step="1" value="50">
+			</div>
+		</div>
+		<article class="instrucciones">
+			<h2>Instrucciones.</h2>
+			<p>Se coherente con tus unidades y no refresques la página hasta que termines.<b> Este es un proyecto en DESARROLLO, cualquier fallo o sugerencia
+			favor de contactar con el autor.</b></p>
+			<h3><i>Zona de dibujo.</i></h3>
+			<img src="imagenes/planos.jpg" alt="chin">
+			<p class="conimg">Primeramente en la esquina superior izquierda tenemos 3 opciones de vistas según el plano que se desee visualizar,
+			se cuenta con un plano (X,Y) uno (X,Z) y (Z,Y), como se muestra en la imágen. (si vas a trabajar en 2D se
+			recomienda el plano (X,Y))</p>
+			<p>Cuando un elemento sea agregado éste se dibujara en las tres vistas, según sus componentes, por ejemplo, si hay una
+			que sea paralela al eje X está no se dibujara en la vista (Z,Y) porque no tiene componentes ni en Z ni en Y. Ahora en la
+			esquina superior derecha se encuentra el menú de las opciones gráficas, las opciones selecionadas serán dibujadas.</p>
+			<p>En la parte inferior derecha se tiene un side-bar que nos sirve para ajustar la escala del dibujo, si lo movemos
+			a la izquierda la imágen se hace mas chica y si lo movemos a la derecha se agranda, por ser una aplicacion web se
+			recomienda no abusar de este recurso.</p>
+			<h3><i>Agregar barras.</i></h3>
+			<p>Lo primero es entar al menú llamado <b>Barras</b>, luego nos va a pedir el módulo de Elasticidad y el área de la sección,
+			si eres nuevo en el mundillo de las estructuas se recomienda marcar como constante ambos. Seguido se encuentran unos
+			selectores para el nodo inicial y el final de la barra, en un principio están vacios pero una vez que se dibuje una barra
+			se agregaran su nodo inicial y su nodo final, se recomienda activar en los ajustes graficos el numero de nodo.</p>
+			<p>Finalmente se cuenta con los espacios para introdicir las coordenadas de los los nodos de inicio y final de la barra. Es
+			decir hay 2 formas de agregar barras con los selctores cuando los nodos de la barra ya han sido usados y con coordenas cuando
+			son nodos nuevos. La barra sera de 2 colores, verde el lado inicial y cafe el final.(si se trabaja en 2D poner 0 en la coordenada Z)</p>
+			<h3><i>Agregar Cargas.</i></h3>
+			<p>Lo primero es entar al menú llamado <b>Cargas</b>, ahora bien, si quieres que se dibujen las cargas debes seleccionar la
+			opcion en el menú de ajustes gráficos, una vez en el menú <b>Cargas</b> se debe seleccionar el nodo donde se aplicara, el valor
+			de la carga (cuyas unidades sean compatibles con tu módulo de Elasticidad) y seleccionar la dirección.</p>
+			<p>Hay una consideracion que debe hacerse al momento de aplicar una carga, cuando se aplique una carga en una dirección
+			mínimo una de las barras que llegan al nodo cargado debe tener una componente en la misma dirección de la carga, es decir,
+			si mi carga va en X mínimo una de las barras que llegan al nodo debe tener una componente en X, y lo mismo aplica para la
+			dirección Y y la dirección Z; y no es porque no se pueda, el detalle está en que se tendría que "resistir" atraves de
+			momentos lo que implica otro tipo de análisis, lo que pasaría si se pone una carga así es que no se tomara en cuenta.
+			(la opción de marcos esta en desarrollo)</p>
+			<h3><i>Agregar Apoyos.</i></h3>
+			<p>Lo primero es entrar al menú llamado <b>Apoyos</b>, ahora bien, si quieres que se dibujen los apoyos debes seleccionar la
+			opción en el menú de ajustes gráficos, después se bebe seleccionar el nodo donde estará el apoyo y se marcaran las casillas
+			de las restricciones de  desplazamiento que tendrá dicho nodo, en caso de seleccionar las 3 direcciones se dibujara un cuadrado,
+			si se selecciona 1 o 2 se dibuja un círculo y se podrá consultar las restricciones de desplazamiento en la tabla correspondiente.</p>
+			<p>Con el fin de optimizar la ejecución, si se establecion un apoyo para un nodo y después se vuelve a establecer otro apoyo
+			para el mismo nodo pero cambiando las restricciones, el apoyo tomará las restricciones de la última modificación.</p>
+			<h3><i>Modificar barras.</i></h3>
+			<p>Lo primero es entrar al menú llamado <b>Barras</b> y dar click al botón modificar, ahora bien, sólo se puede
+			modificar el área de la sección y el módulo de elasticidad, esto porque el código se alargaría, y esto al ser un proyecto
+			en desarrollo aún no se sabe sí sea muy pesado para los navegadores, entonces en caso de haberse equivocado y se desee
+			borrar una barra lo que se puede hacer es cambiar su área a 0 cero, esto hace que no se tome en cuenta durante el cálculo
+			pero seguira estando en el dibujo.</p>
+			<h3><i>Modificar cargas.</i></h3>
+			<p>Lo primero es entrar al menú llamado <b>Cargas</b> y dar click al botón modificar, a las cargas se les puede modificar
+			la magnitud y la dirección, lo único que no se puede es el nodo donde esta aplicada, si se pretende borrar una carga
+			basta con que a la hora de modificarla se ponga 0 cero en el valor de su magnitud.</p>
+			<h3><i>Modificar Apoyos.</i></h3>
+			<p>Basta con realizar el mismo proceso que en <i>Agregar apoyos</i> seleccionando el nodo del apoyo que se desea modificar.</p>
+		</article>
+		<footer><p>Contacto:</p>
+		<a href="https://es-la.facebook.com/sadman.dominguez.9">Facebook</a>
+		<p>Whatsapp. 5549213416</p>
+		<p class="correo"></p>
+		</footer>
+		<script src="java_arma/armadura.js"></script>
+	</body>
+<html>

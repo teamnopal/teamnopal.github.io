@@ -1,0 +1,340 @@
+body{
+	background:#718D8D;/*color de fondo*/
+	/*color:rgb(198, 204, 167);color de letra*//*color ventana ctrl+alt+c*/
+	font-size:100%;
+	overflow: scroll;
+	font-family: "Cambria";
+	}
+.graficos{
+	width: 940px;
+	height: 620px;
+	background: #0d2a32;
+	position: absolute;
+	top: 20px;
+  bottom: 0;
+  left: 440px;
+  right: 0;
+	overflow: hidden;
+	cursor: crosshair;
+}
+canvas{
+	overflow: hidden;
+}
+header{
+	text-align:center;
+	background:#6C9695;
+  color:rgb(198, 204, 167);
+	width:1400px;
+	display:block;/*para centara con margin auto*/
+  margin: auto;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.nodos{
+	width: 50px;
+	cursor: pointer;
+}
+input[type="checkbox"]{
+	cursor: pointer;
+}
+#z1{
+  margin-right: 15px;
+}
+input{
+  background:#718D8D;
+  color:#93cfcf;
+}
+::placeholder{
+  color:rgba(120, 182, 182, 0.77);
+}
+#n1{
+  margin-right: 45px;
+}
+.correo::after{
+	content: "teamnopal@gmail.com";
+}
+footer p{
+	display: inline-block;
+	padding:20px 170px;
+}
+footer{
+	background: #000;
+	color: #ccc;
+}
+footer a{
+	color: #ccc;
+}
+table{
+  border:1px solid;
+	border-collapse:collapse;
+  background:#718D8D;
+  color:#bccf93;
+	table-layout: fixed;
+}
+table tr{
+  border:1px solid;
+}
+table tr td{
+  border:1px solid;
+  text-align: center;
+  min-width: 60px;
+	max-width: 60px;
+	overflow: hidden;
+}
+.coordenadas{
+  width:55px;
+}
+input:disabled{
+	background: #ccc;
+	color: #000;
+}
+.agregar{
+  margin-top: 5px;
+  font-size: 18px;
+  width: 400px;
+  border: none;
+  box-shadow: 2px 2px 0px 0px #3c5548;
+  padding: 1% 0;
+	cursor: pointer;
+}
+table td:hover{
+	background:#308A99;
+	color:#B2A77D;
+}
+table tr:hover{
+	background:#308A99;
+}
+.tablon{
+  padding: 15px;
+  display: inline-block;
+  width: 390px;
+  height: 365px;
+  position: absolute;
+	margin: 0;
+  top: 260px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+.agregar:hover{
+  box-shadow: 1px 1px 0px 0px #3c5548;
+	background:#71848e;
+  color:#93b4cf;
+}
+.agregar:active{
+	box-shadow: 1px 1px 0px 0px #3c5548;
+	background:#71848e;
+  color:#93b4cf;
+	border: none;
+}
+div{
+  overflow: auto;
+}
+article{
+	margin: auto;
+	margin-top: 20px;
+	width:1000px;
+	text-align: justify;
+	background:#6C9695;
+	padding: 20px;
+	display: block;
+}
+h3{
+	clear: both;
+}
+img{
+	width: 100px;
+	margin: 10px;
+	float: left;
+}
+.conimg{
+
+}
+.botonModi{
+	width: 180px;
+}
+.modificar{
+	background: #6c967f;
+  color: #d0c3b2;
+	padding: 10px;
+  display:inline-block;
+  width: 180px;
+  margin: 0;
+  height: 70px;
+	position: absolute;
+	top: 100px;
+  bottom: 0;
+  left: 100px;
+  right: 0;
+}
+.botonAjustes{
+	width: 150px;
+	cursor: pointer;
+}
+.botonAjustes:hover{
+	box-shadow: 1px 1px 0px 0px #3c5548;
+	background:#71848e;
+  color:#93b4cf;
+}
+.menuAjustes{
+	background: #6c967f;
+  color: #d0c3b2;
+	padding: 10px;
+  display:inline-block;
+  width: 150px;
+  margin: 0;
+  height: 175px;
+	position: absolute;
+	top: 100px;
+  bottom: 0;
+  left: 100px;
+  right: 0;
+}
+.entrada{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  display:inline-block;
+  width: 400px;
+  margin: 0;
+  height: 240px;
+
+}
+.panel{
+  overflow: hidden;
+  margin: auto;
+  width:1400px;
+  height: 660px;
+  background: #6c967f;
+  color: #d0c3b2;
+  position: relative;
+}
+.menu{
+  width:1400px;
+  margin: auto;
+}
+.quitar{
+  display: none;
+}
+.opcionesMenu{
+  float: left;
+  padding: 15px 150px;
+  border-right: solid 1px;
+  margin: 0;
+  margin-top: .5%;
+  font-size: 110%;
+  font-family: "Helvetica";
+  background: #6c9689;
+  text-decoration: none;
+  color: #c2d0b2;
+  border-color:#000;
+}
+.menuElegido{
+  background: #6c967f;
+  color: #d0c3b2;
+  float: left;
+  padding: 15px 150px;
+  border-right: solid 1px;
+  margin: 0;
+  margin-top: .5%;
+  font-size: 110%;
+  font-family: "Helvetica";
+  text-decoration: none;
+}
+#modifayer{
+	height: 30px;
+	width: 100px;
+	padding: 5px;
+	text-align: center;
+  margin: 0;
+  font-size: 18px;
+	position: absolute;
+	top: 10px;
+	bottom: 0;
+	left: 400px;
+	right: 0;
+	cursor: pointer;
+}
+#ajustes{
+	height: 30px;
+	width: 30px;
+	padding: 5px;
+	text-align: center;
+  margin: 0;
+  font-size: 18px;
+	position: absolute;
+	top: 10px;
+	bottom: 0;
+	left: 900px;
+	right: 0;
+	cursor: pointer;
+}
+canvas{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+#escala{
+	position: absolute;
+	top: 590px;
+	bottom: 0px;
+	left: 730px;
+	right: 0px;
+	color: #718D8D;
+	cursor: col-resize;
+}
+.opcionesPlanos{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 15px;
+	width: 30px;
+	padding: 5px;
+	text-align: center;
+  margin: 0;
+  font-size: 14px;
+  font-family: "Helvetica";
+  background: #6c9689;
+  text-decoration: none;
+  color: #c2d0b2;
+}
+#plzy{
+	top: 0;
+	bottom: 0;
+	left: 40px;
+	right: 0;
+	border-right: solid 1px;
+	border-left: solid 1px;
+}
+#plxz{
+	top: 0;
+	bottom: 0;
+	left: 82px;
+	right: 0;
+}
+.planoElegido{
+	background: #6c967f;
+  color: #d0c3b2;
+
+}
+.opcionesPlanos:hover{
+	background: #6c967f;
+  color: #d0c3b2;
+}
+.menu a:hover{
+  background: #6c967f;
+  color: #d0c3b2;
+}
+#solucion{
+  padding: 15px 131px;
+  border: none;
+}
