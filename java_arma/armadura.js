@@ -318,7 +318,11 @@ function principal() {
     }
     for (var j = 6; j < 9; j++) {
       compl=document.createElement("td");
-      compl.appendChild(document.createTextNode(Math.abs(barra[i][j])));
+      if (Math.abs(barra[i][j])<0.001) {
+        compl.appendChild(document.createTextNode(0.000));
+      }else {
+        compl.appendChild(document.createTextNode(Math.abs(barra[i][j])));
+      }
       trans.appendChild(compl);
     }
     compl=document.createElement("td");
@@ -364,9 +368,9 @@ function principal() {
       compl.appendChild(document.createTextNode(k[i*3+j][nodo.length*3]));
       trans.appendChild(compl);
     }
-    var rx=nodo[i][6];
-    var ry=nodo[i][7];
-    var rz=nodo[i][8];
+    var rx=-nodo[i][6];
+    var ry=-nodo[i][7];
+    var rz=-nodo[i][8];
     for (var j = 0; j < barra.length; j++) {
       if (barra[j][0]==i) {
         rx=(rx+barra[j][8]*barra[j][3])*nodo[i][3];
@@ -380,13 +384,25 @@ function principal() {
       }
     }
     compl=document.createElement("td");
-    compl.appendChild(document.createTextNode(rx));
+    if (Math.abs(rx)<0.0001) {
+      compl.appendChild(document.createTextNode(0.000));
+    }else {
+      compl.appendChild(document.createTextNode(rx));
+    }
     trans.appendChild(compl);
     compl=document.createElement("td");
-    compl.appendChild(document.createTextNode(ry));
+    if (Math.abs(ry)<0.0001) {
+      compl.appendChild(document.createTextNode(0.000));
+    }else {
+      compl.appendChild(document.createTextNode(ry));
+    }
     trans.appendChild(compl);
     compl=document.createElement("td");
-    compl.appendChild(document.createTextNode(rz));
+    if (Math.abs(rz)<0.0001) {
+      compl.appendChild(document.createTextNode(0.000));
+    }else {
+      compl.appendChild(document.createTextNode(rz));
+    }
     trans.appendChild(compl);
     document.getElementById("tsolNodos").appendChild(trans);
   }
