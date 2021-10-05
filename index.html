@@ -180,67 +180,169 @@
 					</select><br><br>
 					<input type="button" name="mBarra" value="Hecho" class="botonModi" id="mBarra">
 				</div>
+				<input type="button" name="centrar" value="Centrar" class="agregar" id="centrar">
 				<input type="range" name="escala" id="escala" min="1" max="100" step="1" value="50">
 			</div>
 		</div>
 		<article class="instrucciones">
-			<h2>Instrucciones.</h2>
-			<p>Se coherente con tus unidades y no refresques la página hasta que termines.<b> Este es un proyecto en DESARROLLO, cualquier fallo o sugerencia
-			favor de contactar con el autor.</b></p>
-			<h3><i>Zona de dibujo.</i></h3>
-			<img src="imagenes/planos.jpg" alt="chin">
-			<p class="conimg">Primeramente en la esquina superior izquierda tenemos 3 opciones de vistas según el plano que se desee visualizar,
-			se cuenta con un plano (X,Y) uno (X,Z) y (Z,Y), como se muestra en la imágen. (si vas a trabajar en 2D se
-			recomienda el plano (X,Y))</p>
-			<p>Cuando un elemento sea agregado éste se dibujara en las tres vistas, según sus componentes, por ejemplo, si hay una
-			que sea paralela al eje X está no se dibujara en la vista (Z,Y) porque no tiene componentes ni en Z ni en Y. Ahora en la
-			esquina superior derecha se encuentra el menú de las opciones gráficas, las opciones selecionadas serán dibujadas.</p>
-			<p>En la parte inferior derecha se tiene un side-bar que nos sirve para ajustar la escala del dibujo, si lo movemos
-			a la izquierda la imágen se hace mas chica y si lo movemos a la derecha se agranda, por ser una aplicacion web se
-			recomienda no abusar de este recurso.</p>
-			<h3><i>Agregar barras.</i></h3>
-			<p>Lo primero es entar al menú llamado <b>Barras</b>, luego nos va a pedir el módulo de Elasticidad y el área de la sección,
-			si eres nuevo en el mundillo de las estructuas se recomienda marcar como constante ambos. Seguido se encuentran unos
-			selectores para el nodo inicial y el final de la barra, en un principio están vacios pero una vez que se dibuje una barra
-			se agregaran su nodo inicial y su nodo final, se recomienda activar en los ajustes graficos el numero de nodo.</p>
-			<p>Finalmente se cuenta con los espacios para introdicir las coordenadas de los los nodos de inicio y final de la barra. Es
-			decir hay 2 formas de agregar barras con los selctores cuando los nodos de la barra ya han sido usados y con coordenas cuando
-			son nodos nuevos. La barra sera de 2 colores, verde el lado inicial y cafe el final.(si se trabaja en 2D poner 0 en la coordenada Z)</p>
-			<h3><i>Agregar Cargas.</i></h3>
-			<p>Lo primero es entar al menú llamado <b>Cargas</b>, ahora bien, si quieres que se dibujen las cargas debes seleccionar la
-			opcion en el menú de ajustes gráficos, una vez en el menú <b>Cargas</b> se debe seleccionar el nodo donde se aplicara, el valor
-			de la carga (cuyas unidades sean compatibles con tu módulo de Elasticidad) y seleccionar la dirección.</p>
-			<p>Hay una consideracion que debe hacerse al momento de aplicar una carga, cuando se aplique una carga en una dirección
-			mínimo una de las barras que llegan al nodo cargado debe tener una componente en la misma dirección de la carga, es decir,
-			si mi carga va en X mínimo una de las barras que llegan al nodo debe tener una componente en X, y lo mismo aplica para la
-			dirección Y y la dirección Z; y no es porque no se pueda, el detalle está en que se tendría que "resistir" atraves de
-			momentos lo que implica otro tipo de análisis, lo que pasaría si se pone una carga así es que no se tomara en cuenta.
-			(la opción de marcos esta en desarrollo)</p>
-			<h3><i>Agregar Apoyos.</i></h3>
-			<p>Lo primero es entrar al menú llamado <b>Apoyos</b>, ahora bien, si quieres que se dibujen los apoyos debes seleccionar la
-			opción en el menú de ajustes gráficos, después se bebe seleccionar el nodo donde estará el apoyo y se marcaran las casillas
-			de las restricciones de  desplazamiento que tendrá dicho nodo, en caso de seleccionar las 3 direcciones se dibujara un cuadrado,
-			si se selecciona 1 o 2 se dibuja un círculo y se podrá consultar las restricciones de desplazamiento en la tabla correspondiente.</p>
-			<p>Con el fin de optimizar la ejecución, si se establecion un apoyo para un nodo y después se vuelve a establecer otro apoyo
-			para el mismo nodo pero cambiando las restricciones, el apoyo tomará las restricciones de la última modificación.</p>
-			<h3><i>Modificar barras.</i></h3>
-			<p>Lo primero es entrar al menú llamado <b>Barras</b> y dar click al botón modificar, ahora bien, sólo se puede
-			modificar el área de la sección y el módulo de elasticidad, esto porque el código se alargaría, y esto al ser un proyecto
-			en desarrollo aún no se sabe sí sea muy pesado para los navegadores, entonces en caso de haberse equivocado y se desee
-			borrar una barra lo que se puede hacer es cambiar su área a 0 cero, esto hace que no se tome en cuenta durante el cálculo
-			pero seguira estando en el dibujo.</p>
-			<h3><i>Modificar cargas.</i></h3>
-			<p>Lo primero es entrar al menú llamado <b>Cargas</b> y dar click al botón modificar, a las cargas se les puede modificar
-			la magnitud y la dirección, lo único que no se puede es el nodo donde esta aplicada, si se pretende borrar una carga
-			basta con que a la hora de modificarla se ponga 0 cero en el valor de su magnitud.</p>
-			<h3><i>Modificar Apoyos.</i></h3>
-			<p>Basta con realizar el mismo proceso que en <i>Agregar apoyos</i> seleccionando el nodo del apoyo que se desea modificar.</p>
+			<div class="">
+				<h2 class="resetas">Instrucciones »</h2>
+			</div>
+			<div class="quitar" id="instruccionArmadura">
+				<p>Se coherente con tus unidades y no refresques la página hasta que termines.<b> Este es un proyecto en DESARROLLO, cualquier fallo o sugerencia
+				favor de contactar con el autor.</b></p>
+				<h3><i>Zona de dibujo.</i></h3>
+				<img src="imagenes/planos.jpg" alt="chin">
+				<p class="conimg">Primeramente en la esquina superior izquierda tenemos 3 opciones de vistas según el plano que se desee visualizar,
+				se cuenta con un plano (X,Y) uno (X,Z) y (Z,Y), como se muestra en la imágen. (si vas a trabajar en 2D se
+				recomienda el plano (X,Y))</p>
+				<p>Cuando un elemento sea agregado éste se dibujara en las tres vistas, según sus componentes, por ejemplo, si hay una
+				que sea paralela al eje X está no se dibujara en la vista (Z,Y) porque no tiene componentes ni en Z ni en Y. Ahora en la
+				esquina superior derecha se encuentra el menú de las opciones gráficas, las opciones selecionadas serán dibujadas.</p>
+				<p>En la parte inferior derecha se tiene un side-bar que nos sirve para ajustar la escala del dibujo, si lo movemos
+				a la izquierda la imágen se hace mas chica y si lo movemos a la derecha se agranda, por ser una aplicacion web se
+				recomienda no abusar de este recurso.</p>
+				<h3><i>Agregar barras.</i></h3>
+				<p>Lo primero es entar al menú llamado <b>Barras</b>, luego nos va a pedir el módulo de Elasticidad y el área de la sección,
+				si eres nuevo en el mundillo de las estructuas se recomienda marcar como constante ambos. Seguido se encuentran unos
+				selectores para el nodo inicial y el final de la barra, en un principio están vacios pero una vez que se dibuje una barra
+				se agregaran su nodo inicial y su nodo final, se recomienda activar en los ajustes graficos el numero de nodo.</p>
+				<p>Finalmente se cuenta con los espacios para introdicir las coordenadas de los los nodos de inicio y final de la barra. Es
+				decir hay 2 formas de agregar barras con los selctores cuando los nodos de la barra ya han sido usados y con coordenas cuando
+				son nodos nuevos. La barra sera de 2 colores, verde el lado inicial y cafe el final.(si se trabaja en 2D poner 0 en la coordenada Z)</p>
+				<h3><i>Agregar Cargas.</i></h3>
+				<p>Lo primero es entar al menú llamado <b>Cargas</b>, ahora bien, si quieres que se dibujen las cargas debes seleccionar la
+				opcion en el menú de ajustes gráficos, una vez en el menú <b>Cargas</b> se debe seleccionar el nodo donde se aplicara, el valor
+				de la carga (cuyas unidades sean compatibles con tu módulo de Elasticidad) y seleccionar la dirección.</p>
+				<p>Hay una consideracion que debe hacerse al momento de aplicar una carga, cuando se aplique una carga en una dirección
+				mínimo una de las barras que llegan al nodo cargado debe tener una componente en la misma dirección de la carga, es decir,
+				si mi carga va en X mínimo una de las barras que llegan al nodo debe tener una componente en X, y lo mismo aplica para la
+				dirección Y y la dirección Z; y no es porque no se pueda, el detalle está en que se tendría que "resistir" atraves de
+				momentos lo que implica otro tipo de análisis, lo que pasaría si se pone una carga así es que no se tomara en cuenta.
+				(la opción de marcos esta en desarrollo)</p>
+				<h3><i>Agregar Apoyos.</i></h3>
+				<p>Lo primero es entrar al menú llamado <b>Apoyos</b>, ahora bien, si quieres que se dibujen los apoyos debes seleccionar la
+				opción en el menú de ajustes gráficos, después se bebe seleccionar el nodo donde estará el apoyo y se marcaran las casillas
+				de las restricciones de  desplazamiento que tendrá dicho nodo, en caso de seleccionar las 3 direcciones se dibujara un cuadrado,
+				si se selecciona 1 o 2 se dibuja un círculo y se podrá consultar las restricciones de desplazamiento en la tabla correspondiente.</p>
+				<p>Con el fin de optimizar la ejecución, si se establecion un apoyo para un nodo y después se vuelve a establecer otro apoyo
+				para el mismo nodo pero cambiando las restricciones, el apoyo tomará las restricciones de la última modificación.</p>
+				<h3><i>Modificar barras.</i></h3>
+				<p>Lo primero es entrar al menú llamado <b>Barras</b> y dar click al botón modificar, ahora bien, sólo se puede
+				modificar el área de la sección y el módulo de elasticidad, esto porque el código se alargaría, y esto al ser un proyecto
+				en desarrollo aún no se sabe sí sea muy pesado para los navegadores, entonces en caso de haberse equivocado y se desee
+				borrar una barra lo que se puede hacer es cambiar su área a 0 cero, esto hace que no se tome en cuenta durante el cálculo
+				pero seguira estando en el dibujo.</p>
+				<h3><i>Modificar cargas.</i></h3>
+				<p>Lo primero es entrar al menú llamado <b>Cargas</b> y dar click al botón modificar, a las cargas se les puede modificar
+				la magnitud y la dirección, lo único que no se puede es el nodo donde esta aplicada, si se pretende borrar una carga
+				basta con que a la hora de modificarla se ponga 0 cero en el valor de su magnitud.</p>
+				<h3><i>Modificar Apoyos.</i></h3>
+				<p>Basta con realizar el mismo proceso que en <i>Agregar apoyos</i> seleccionando el nodo del apoyo que se desea modificar.</p>
+			</div>
+		</article>
+		<! –– empieza analisis simico ––>
+		<header>
+			<h1>FRECUENCIAS Y VECTORES MODALES MÉTODO DE HOLZEN</h1>
+			<p><b>Se recomienda fuertemente seguir el orden en el que aparecen los pasos de ingreso de datos y por supuesto se congruente con tus unidades.</b></p>
+		</header>
+		<div class="frecuencia">
+			<div class="panel trio resumen">
+				<h2 class="nomMatriz">Frecuencia y vector modal</h2>
+				<input type="button" name="agregarBarra" value="Solucion" class="agregar dobleBoton apcion" id="modal">
+				<div class="tmodal">
+					<table class="tabla" id="frecHol"><!--
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>&omega;	</td>
+						</tr>
+						<tr>
+							<td>&omega;^2</td>
+							<td class="dobleC"></td>
+							<td class="dobleC"></td>
+							<td class="dobleC"></td>
+							<td class="dobleC"></td>
+							<td class="dobleC"></td>
+							<td class="dobleC"></td>
+							<td class="dobleC"></td>
+							<td class="dobleC"></td>
+							<td class="dobleC"></td>
+						</tr>
+						<tr>
+							<td>Rigidez</td>
+						</tr>
+						<tr>
+							<td>m*&omega;^2</td>
+						</tr>
+						<tr>
+							<td>Fi</td>
+						</tr>
+						<tr>
+							<td>Fe</td>
+						</tr>
+						<tr>
+							<td>&Delta;x</td>
+						</tr>
+						<tr>
+							<td>X</td>
+						</tr> -->
+					</table>
+				</div>
+
+			</div>
+
+			<div class="panel trio">
+				<h2 class="nomMatriz">Masas</h2>
+				<textarea id="textoMasa" onpaste="verTexto();" onclick="this.value='';" oncontextmenu="this.value='';" rows="5" cols="48">m1
+m2
+m3
+m4
+…
+
+</textarea>
+				<input type="button" name="agregarBarra" value="Agregar Masas" class="agregar dobleBoton" id="masas">
+				<h2 class="nomMatriz">Rigideces</h2>
+				<textarea class="mRigida" id="textoRigido" onpaste="verTexto();" onclick="this.value='';" oncontextmenu="this.value='';" rows="5" cols="48">K1
+K2
+K3
+K4
+…
+</textarea>
+				<input type="button" name="agregarBarra" value="Agregar Rigideces" class="agregar dobleBoton" id="rigideces">
+			</div>
+		</div>
+		<article class="instrucciones">
+			<div class="">
+				<h2 class="resetas">Instrucciones »</h2>
+			</div>
+			<div class="quitar" id="instruccionModos">
+				<p>Se coherente con tus unidades y no refresques la página hasta que termines.<b> Este es un proyecto en DESARROLLO, cualquier fallo o sugerencia
+				favor de contactar con el autor.</b></p>
+				<h3><i>Introducción de datos.</i></h3>
+				<p class="conimg">Para introducir datos hay que dirigirse al área de texto correspondiente, vigilando que todos los valores sean positivos,
+				con el fin de hacer más versátil el software no especificamos unidades, pero tú debes tener cuidado de tener unidades congruentes, recuerda
+				que todos estos valores son positivos, una vez que agregues tus datos no los podrás modificar.</p>
+				<p>Es un renglón por cada dato, con el fin de hacer más cómodo se puede escribir los datos en un bloc de notas o un archivo de Excel y
+				pegarlo en las áreas de texto, evítese el uso de Word. Recuerda dar click en el boton correspondiente.</p>
+				<p>En caso de que quieras cambiar algun dato o calcular las frecuencias de otra estructura, deberas refrescar la página y repetir el
+					proceso.</p>
+			</div>
 		</article>
 		<footer><p>Contacto:</p>
 		<a href="https://es-la.facebook.com/sadman.dominguez.9">Facebook</a>
 		<p>Whatsapp. 5549213416</p>
 		<p class="correo"></p>
 		</footer>
-		<script src="java_arma/armadura.js"></script>
+		<script src="java_arma/newmark.js"></script>
 	</body>
 <html>

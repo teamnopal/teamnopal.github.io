@@ -116,7 +116,30 @@ table tr:hover{
   bottom: 0;
   left: 0;
   right: 0;
-
+}
+.tmodal{
+	padding: 15px;
+  display: inline-block;
+  width: 800px;
+  height: 410px;
+  position: absolute;
+	margin: 0;
+  top: 160px;
+  bottom: 0;
+  left: 40px;
+  right: 0;
+}
+.dobleC{
+	min-width: 120px;
+	max-width: 120px;
+	height: 30px;
+	padding: 2px;
+}
+.senciC{
+	min-width: 60px;
+	max-width: 60px;
+	height: 30px;
+	padding: 2px;
 }
 .agregar:hover{
   box-shadow: 1px 1px 0px 0px #3c5548;
@@ -135,11 +158,23 @@ div{
 article{
 	margin: auto;
 	margin-top: 20px;
+	margin-bottom: 20px;
 	width:1000px;
 	text-align: justify;
 	background:#6C9695;
 	padding: 20px;
 	display: block;
+}
+article h2{
+	font-family: "Helvetica";
+  text-decoration: none;
+  color: #c2d0b2;
+}
+article h2:hover{
+	font-family: "Helvetica";
+  text-decoration: none;
+  color: #d0c3b2;
+	cursor: pointer;
 }
 h3{
 	clear: both;
@@ -337,4 +372,69 @@ canvas{
 #solucion{
   padding: 15px 131px;
   border: none;
+}
+.moviendo{
+	cursor: grabbing;
+}
+#centrar{
+	height: 20px;
+	width: 80px;
+	padding: 2px;
+	text-align: center;
+  margin: 0;
+  font-size: 13px;
+	position: absolute;
+	top: 590px;
+	bottom: 0;
+	left: 630px;
+	right: 0;
+	cursor: pointer;
+}
+.trio{
+	width:426px;
+  height: 660px;
+	float: right;
+	display: inline-block;
+	margin: 15px;
+	padding: 10px;
+}
+.nomMatriz{
+	text-align: center;
+	font-size: 30px;
+}
+.frecuencia{
+	width:1475px;
+  height: 710px;
+}
+textarea{
+	background:#8e8871;
+  color:#93cfcf;
+	margin: 10px;
+	width: 100px;
+	height: 160px;
+	align-items: center;
+	margin-left: 165px;
+	padding: 5px;
+}
+.mRigida{
+	width: 100px;
+	margin-left: 165px;
+}
+textarea:hover{
+	background:#8e7e71;
+  color:#93becf;
+}
+textarea:focus{
+	background:#8e7571;
+  color:#93b0cf;
+}
+.dobleBoton{
+	margin-left: 10px;
+}
+.resumen{
+	width: 900px;
+}
+.apcion{
+	width: 300px;
+	margin-left: 300px;
 }
