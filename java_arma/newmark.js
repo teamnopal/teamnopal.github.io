@@ -1384,7 +1384,7 @@ function resetaModal() {
 }
 function redondeo(num,red) {
   num=num*(Math.pow(10,red));
-  console.log(num);
+  //console.log(num);
   num= Math.round(num);
   num=num/(Math.pow(10,red));
   return num;
