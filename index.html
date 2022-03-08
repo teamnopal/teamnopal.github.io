@@ -338,6 +338,51 @@ K4
 					proceso.</p>
 			</div>
 		</article>
+		<header>
+			<h1>DIMENSIONAMIENTO DE ZAPATAS</h1>
+			<p><b>Se recomienda fuertemente seguir el orden en el que aparecen los pasos de ingreso de datos y por supuesto se congruente con las unidades metricas.</b></p>
+		</header>
+		<div class="frecuencia">
+			<div class="panel trio resumen">
+				<h2 class="nomMatriz">Resultados</h2>
+
+				
+			</div>
+
+			<div class="panel trio">
+				<h2 class="nomMatriz">Acciones</h2>
+				<label for="fuerzaAxial" class="datoZapata">Fuerza Axial</label><br>
+				<input type="number" name="fuerzaAxial" id="fuerzaAxial" value="" placeholder="En kg" class="datoZapata"><br>
+				<label for="momento" class="datoZapata">Momento</label><br>
+				<input type="number" name="momento" id="momento" value="" placeholder="En kg*m" class="datoZapata">
+				<!--<input type="button" name="agregarBarra" value="Agregar Masas" class="agregar dobleBoton" id="masas">-->
+				<h2 class="nomMatriz">Condiciones</h2>
+				<label for="ru" class="datoZapata">Capacidad de carga</label><br>
+				<input type="number" name="ru" id="ru" value="" placeholder="En kg/m^2" class="datoZapata">
+				<label for="fc" class="datoZapata">f'c</label><br>
+				<input type="number" name="fc" id="fc" value="" placeholder="En kg/cm^2" class="datoZapata">
+				<label for="anchoCol" class="datoZapata">Ancho de la columna</label><br>
+				<input type="number" name="anchoCol" id="anchoCol" value="" placeholder="En m" class="datoZapata"><br><br>
+				<input type="button" name="agregarBarra" value="Calcular dimensiones" class="agregar dobleBoton" id="dimZap">
+			</div>
+		</div>
+		<article class="instrucciones">
+			<div class="">
+				<h2 class="resetas">Instrucciones »</h2>
+			</div>
+			<div class="quitar" id="instruccionModos">
+				<p>Se coherente con tus unidades y no refresques la página hasta que termines.<b> Este es un proyecto en DESARROLLO, cualquier fallo o sugerencia
+				favor de contactar con el autor.</b></p>
+				<h3><i>Introducción de datos.</i></h3>
+				<p class="conimg">Para introducir datos hay que dirigirse al área de texto correspondiente, vigilando que todos los valores sean positivos,
+				con el fin de hacer más versátil el software no especificamos unidades, pero tú debes tener cuidado de tener unidades congruentes, recuerda
+				que todos estos valores son positivos, una vez que agregues tus datos no los podrás modificar.</p>
+				<p>Es un renglón por cada dato, con el fin de hacer más cómodo se puede escribir los datos en un bloc de notas o un archivo de Excel y
+				pegarlo en las áreas de texto, evítese el uso de Word. Recuerda dar click en el boton correspondiente.</p>
+				<p>En caso de que quieras cambiar algun dato o calcular las frecuencias de otra estructura, deberas refrescar la página y repetir el
+					proceso.</p>
+			</div>
+		</article>
 		<footer><p>Contacto:</p>
 		<a href="https://es-la.facebook.com/sadman.dominguez.9">Facebook</a>
 		<p>Whatsapp. 5549213416</p>

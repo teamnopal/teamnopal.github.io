@@ -1384,8 +1384,117 @@ function resetaModal() {
 }
 function redondeo(num,red) {
   num=num*(Math.pow(10,red));
-  //console.log(num);
+  console.log(num);
   num= Math.round(num);
   num=num/(Math.pow(10,red));
   return num;
+}
+//inicia dimendionamiento de ZAPATAS
+document.getElementById("dimZap").addEventListener("click",dimencionarFinal);
+//variables
+var e;
+var l;
+var b;
+var h;
+var col;
+var hd;
+var capCarg;
+var pu;
+var mu;
+var fcc;
+var f=new Array(2)
+var den;
+//funciones
+function dimencionarFinal() {
+  pu=parseFloat(document.getElementById("fuerzaAxial").value);
+  mu=parseFloat(document.getElementById("momento").value);
+  col=parseFloat(document.getElementById("anchoCol").value)*100;
+  fcc=parseFloat(document.getElementById("fc").value);
+  e=mu/pu;//e en m
+  capCarg=parseFloat(document.getElementById("ru").value);
+  l=6*e;//l en m
+  b=2*pu/(l*capCarg);//b en m
+  l=redondearCincoMas(l*100);//l en cm
+  b=redondearCincoMas(b*100);//b en cm
+  f=ecuacionNavie(pu,mu*100,l,b);// en kg/cm2
+  capCarg=capCarg/10000;//capacidad de carga en kg/cm2
+  h=peralteRes(f[0],capCarg);//peralte en cm
+  hd=h-5//peralte efectivo en cm
+  var i=0;
+  while (tensionDiagonal()==false) {
+    h=h+1
+    hd=h-5;//peralte efectivo en cm
+    i=i+1;
+  }
+  nuevaSeccionCambioPeralte();
+  //console.log(h);
+  //console.log(l);
+  //console.log(b);
+}
+function redondearCincoMas(n) {
+  if (n<=5) {
+    return 5;
+  }
+  var i=0;
+  do {
+    n=n-5
+    i=i+1
+  } while (n>5);
+  return (i+1)*5;
+}
+function ecuacionNavie(pre,mom,la,co) {
+  var si= new Array(2);
+  si[0]=pre/(la*co)+mom*6/(la*la*co);
+  si[1]=pre/(la*co)-mom*6/(la*la*co);
+  //console.log(si);
+  return si;
+}
+function peralteRes(esf,ru) {
+  return (ru-esf)/(2400/Math.pow(100,3));
+}
+function tensionDiagonal() {
+  var vu;
+  var vcr;
+  vu=b*(f[0]*(0.5*(l-col)-hd)+((f[1]-f[0])/(2*l))*Math.pow((0.5*(l-col)-hd),2));// en kg
+  //console.log(vu);
+  vcr=0.75*0.5*Math.pow(fcc,0.5)*b*hd;//en kg
+  if (vcr>=vu) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+function nuevaSeccionCambioPeralte() {
+  var lt=redondearCincoMas(6*e*100);
+  var bt=b;
+  var j=0;
+  f=ecuacionNavie(pu+h*l*b*0.0024,mu*100,l,b);
+  while (f[0]>capCarg) {
+    if (j%2==0) {
+      lt=lt+5;//en cm
+    }
+    else {
+      bt=bt+5;//en cm
+    }
+    f=ecuacionNavie(pu+h*lt*bt*0.0024,mu*100,lt,bt);
+    j=j+1
+  }
+  l=lt;//en cm
+  b=bt;//en cm
+  console.log(l);
+  console.log(b);
+}
+function ajustarBantes() {
+  b=(pu/l+6*pu*e/Math.pow(l,2))/(capCarg-den*h);
+}
+function ajustarBdesp() {
+  b=-pu/(h*l*den-1.5*(0.5*l-e)*capCarg);
+}
+function navieDos(pre,la,co) {
+  var si= new Array(2);
+  si[0]=2*pre/(3*(0.5*la-e)*co);
+  si[1]=0;
+  //console.log(si);
+  return si;
 }
